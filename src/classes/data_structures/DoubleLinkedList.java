@@ -1,4 +1,4 @@
-package data_structures;
+package classes.data_structures;
 
 interface LinkedListInterface<T>{
     public void AddBefore(DoubleListNode<T> node, T value);

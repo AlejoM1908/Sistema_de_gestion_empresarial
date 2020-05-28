@@ -1,4 +1,4 @@
-package data_structures;
+package classes.data_structures;
 
 interface QueueInterface<T>{
     public void Enqueue(T value);
@@ -52,7 +52,7 @@ class QueueNode<T> {
         return this.next;
     }
 
-    public void setNext(QueueNode next) {
+    public void setNext(QueueNode<T> next) {
         this.next = next;
     }
 }
@@ -79,7 +79,7 @@ public class Queue<T> implements QueueInterface<T>{
      * 
      * @param head of the Queue to reconstructed
      */
-    Queue(QueueNode head){
+    Queue(QueueNode<T> head){
         this.head = head;
         this.size = 0;
         StablishQueue();

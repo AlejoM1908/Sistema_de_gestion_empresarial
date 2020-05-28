@@ -1,4 +1,4 @@
-package data_structures;
+package classes.data_structures;
 
 interface StackInterface<T> {
     public void Push(T value);
@@ -48,11 +48,11 @@ class StackNode<T> {
      * @HasSetter
      * @return next node pointer
      */
-    public StackNode getNext() {
+    public StackNode<T> getNext() {
         return next;
     }
 
-    public void setNext(StackNode next) {
+    public void setNext(StackNode<T> next) {
         this.next = next;
     }
 }
