@@ -2,13 +2,14 @@ package classes.others;
 
 public class User implements Comparable<User> {
     private int id;
-    private String user, password, email;
+    private String nickname, password, email, type;
 
-    User(int id, String user, String password, String email){
+    public User(int id, String nickname, String password, String email, String type){
         this.id = id;
-        this.user = user;
+        this.nickname = nickname;
         this.password = password;
         this.email = email;
+        this.type = type;
     }
 
     @Override
@@ -24,5 +25,21 @@ public class User implements Comparable<User> {
 
     public int getId(){
         return this.id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getType() {
+        return type;
     }
 }

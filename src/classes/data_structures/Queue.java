@@ -68,7 +68,7 @@ public class Queue<T> implements QueueInterface<T>{
     /**
      * Constructor of the class Queue
      */
-    Queue() {
+    public  Queue() {
         this.size = 0;
         this.head = null;
         this.tail = null;
@@ -79,7 +79,7 @@ public class Queue<T> implements QueueInterface<T>{
      * 
      * @param head of the Queue to reconstructed
      */
-    Queue(QueueNode<T> head){
+    public Queue(QueueNode<T> head){
         this.head = head;
         this.size = 0;
         StablishQueue();

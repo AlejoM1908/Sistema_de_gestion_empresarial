@@ -68,7 +68,7 @@ public class Stack<T> implements StackInterface<T>{
     /**
      * Constructor of the class Stack
      */
-    Stack() {
+    public Stack() {
         this.size = 0;
         this.head = null;
     }
@@ -78,7 +78,7 @@ public class Stack<T> implements StackInterface<T>{
      * 
      * @param head of the Stack to be reconstructed
      */
-    Stack(StackNode<T> head){
+    public Stack(StackNode<T> head){
         this.head = head;
         this.size = 0;
         StablishStack();
