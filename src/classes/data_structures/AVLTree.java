@@ -237,8 +237,9 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
             insertNode.setLeft(newNode);
 
         this.size++;
-        if (this.last.compareTo(value) > 0) this.last = value;
-        
+        if (this.last.compareTo(value) > 0)
+            this.last = value;
+
         UpdateHeight(newNode);
         Balance(newNode);
     }
@@ -260,7 +261,8 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
                 } else if (deleteNode.getKey().compareTo((T) deleteNode.getParent().getKey()) < 0) {
                     deleteNode.getParent().setLeft(null);
                 }
-            } else this.root = null;
+            } else
+                this.root = null;
         }
         // Deleting if deleteNode have only a left treeNode
         else if (deleteNode.getLeft() != null && deleteNode.getRight() == null) {
@@ -293,15 +295,17 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
             changeNode.setLeft(deleteNode.getLeft());
             changeNode.getLeft().setParent(changeNode);
 
-            if (changeNode.getRight() != null && changeNode.getParent() != deleteNode){
+            if (changeNode.getRight() != null && changeNode.getParent() != deleteNode) {
                 TreeNode<T> temporalNode = changeNode.getRight();
 
                 changeNode.setRight(deleteNode.getRight());
                 changeNode.getRight().setParent(changeNode);
                 changeNode.getRight().setLeft(temporalNode);
             }
-            if (deleteNode.getParent() != null) changeNode.setParent(deleteNode.getParent());
-            else this.root = changeNode;
+            if (deleteNode.getParent() != null)
+                changeNode.setParent(deleteNode.getParent());
+            else
+                this.root = changeNode;
         }
 
         this.size--;
@@ -330,9 +334,8 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
             }
 
             return currentNode;
-        } 
-        else {
-            while (currentNode.getParent() != null){
+        } else {
+            while (currentNode.getParent() != null) {
                 if (currentNode.getKey().compareTo(currentNode.getParent().getKey()) > 0) {
                     currentNode = currentNode.getParent();
                 } else if (currentNode.getKey().compareTo(currentNode.getParent().getKey()) < 0) {
@@ -499,7 +502,8 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
      * 
      */
     public void PreOrder(TreeNode<T> current, Queue<T> returnQueue) {
-        if (current == null) return;
+        if (current == null)
+            return;
 
         returnQueue.Enqueue(current.getKey());
         PreOrder(current.getLeft(), returnQueue);
@@ -531,7 +535,7 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
 
     }
 
-    public T Largest(){
+    public T Largest() {
         return null;
     }
 
@@ -584,6 +588,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
      */
     public T getLast() {
         return last;
-}
-    
+    }
+
 }

@@ -79,7 +79,7 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T>{
     private int size;
 
     /**
-     * Constructor of the class DoubleLinkedList
+     * Constructor of thFe class DoubleLinkedList
      */
     public DoubleLinkedList() {
         this.head = null;

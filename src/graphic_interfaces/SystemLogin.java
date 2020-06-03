@@ -91,6 +91,19 @@ public class SystemLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Panel_SystemLogin = new javax.swing.JPanel();
+        Label_ExitButton = new javax.swing.JLabel();
+        Label_UserIcon = new javax.swing.JLabel();
+        LabelUser = new javax.swing.JLabel();
+        LabelUserIcon2 = new javax.swing.JLabel();
+        TextUser = new javax.swing.JTextField();
+        SeparatorUser = new javax.swing.JSeparator();
+        LabelPassword = new javax.swing.JLabel();
+        LabelPasswordIcon = new javax.swing.JLabel();
+        PasswordField = new javax.swing.JPasswordField();
+        SeparatorPassword = new javax.swing.JSeparator();
+        Label_LoginButton = new javax.swing.JLabel();
+        Label_NewUserButton = new javax.swing.JLabel();
         Panel_NewUser = new javax.swing.JPanel();
         Label_ReturnButton = new javax.swing.JLabel();
         Label_NewUserIcon = new javax.swing.JLabel();
@@ -111,25 +124,149 @@ public class SystemLogin extends javax.swing.JFrame {
         Text_Email = new javax.swing.JTextField();
         Separator_Email = new javax.swing.JSeparator();
         Label_CreateUserButton = new javax.swing.JLabel();
-        Panel_SystemLogin = new javax.swing.JPanel();
-        Label_ExitButton = new javax.swing.JLabel();
-        Label_UserIcon = new javax.swing.JLabel();
-        LabelUser = new javax.swing.JLabel();
-        LabelUserIcon2 = new javax.swing.JLabel();
-        TextUser = new javax.swing.JTextField();
-        SeparatorUser = new javax.swing.JSeparator();
-        LabelPassword = new javax.swing.JLabel();
-        LabelPasswordIcon = new javax.swing.JLabel();
-        PasswordField = new javax.swing.JPasswordField();
-        SeparatorPassword = new javax.swing.JSeparator();
-        Label_LoginButton = new javax.swing.JLabel();
-        Label_NewUserButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel_SystemLogin.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_SystemLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        Panel_SystemLogin.setForeground(new java.awt.Color(255, 255, 255));
+
+        Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeExitDoor_32px.png"))); // NOI18N
+        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_ExitButtonMouseClicked(evt);
+            }
+        });
+
+        Label_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px.png"))); // NOI18N
+
+        LabelUser.setBackground(new java.awt.Color(255, 255, 255));
+        LabelUser.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        LabelUser.setForeground(new java.awt.Color(255, 99, 71));
+        LabelUser.setText("Usuario:");
+
+        LabelUserIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_32px.png"))); // NOI18N
+
+        TextUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        TextUser.setForeground(new java.awt.Color(130, 130, 130));
+        TextUser.setBorder(null);
+
+        SeparatorUser.setForeground(new java.awt.Color(130, 130, 130));
+
+        LabelPassword.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        LabelPassword.setForeground(new java.awt.Color(255, 99, 71));
+        LabelPassword.setText("Contraseña:");
+
+        LabelPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_Key_32px.png"))); // NOI18N
+
+        PasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        PasswordField.setForeground(new java.awt.Color(130, 130, 130));
+        PasswordField.setBorder(null);
+
+        SeparatorPassword.setForeground(new java.awt.Color(130, 130, 130));
+
+        Label_LoginButton.setBackground(new java.awt.Color(255, 99, 71));
+        Label_LoginButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_LoginButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_LoginButton.setText("Ingresar");
+        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_LoginButton.setOpaque(true);
+        Label_LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_LoginButtonMouseClicked(evt);
+            }
+        });
+
+        Label_NewUserButton.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        Label_NewUserButton.setForeground(new java.awt.Color(255, 99, 71));
+        Label_NewUserButton.setText("Crear un nuevo Usuario");
+        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_NewUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_NewUserButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Panel_SystemLoginLayout = new javax.swing.GroupLayout(Panel_SystemLogin);
+        Panel_SystemLogin.setLayout(Panel_SystemLoginLayout);
+        Panel_SystemLoginLayout.setHorizontalGroup(
+            Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
+                        .addComponent(Label_UserIcon)
+                        .addGap(115, 115, 115))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
+                        .addComponent(Label_ExitButton)
+                        .addContainerGap())))
+            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
+                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(SeparatorPassword)
+                            .addComponent(SeparatorUser, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_SystemLoginLayout.createSequentialGroup()
+                                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LabelPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelUser, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_SystemLoginLayout.createSequentialGroup()
+                                        .addComponent(LabelPasswordIcon)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
+                                .addComponent(LabelUserIcon2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextUser))))
+                    .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(Label_LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Label_NewUserButton)
+                .addGap(89, 89, 89))
+        );
+        Panel_SystemLoginLayout.setVerticalGroup(
+            Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(Label_ExitButton)
+                .addGap(18, 18, 18)
+                .addComponent(Label_UserIcon)
+                .addGap(30, 30, 30)
+                .addComponent(LabelUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelUserIcon2)
+                    .addComponent(TextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SeparatorUser, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelPasswordIcon))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SeparatorPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(Label_LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Label_NewUserButton)
+                .addGap(40, 40, 40))
+        );
+
+        getContentPane().add(Panel_SystemLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 490));
 
         Panel_NewUser.setBackground(new java.awt.Color(255, 255, 255));
         Panel_NewUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
@@ -142,14 +279,14 @@ public class SystemLogin extends javax.swing.JFrame {
             }
         });
 
-        Label_NewUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px_2.png"))); // NOI18N
+        Label_NewUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px.png"))); // NOI18N
 
         Label_NewUser.setBackground(new java.awt.Color(255, 255, 255));
         Label_NewUser.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         Label_NewUser.setForeground(new java.awt.Color(255, 99, 71));
         Label_NewUser.setText("Nuevo Usuario:");
 
-        Label_NewUserIcon_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_customer_32px_1.png"))); // NOI18N
+        Label_NewUserIcon_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_32px.png"))); // NOI18N
 
         Text_NewUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         Text_NewUser.setForeground(new java.awt.Color(130, 130, 130));
@@ -302,143 +439,6 @@ public class SystemLogin extends javax.swing.JFrame {
         );
 
         getContentPane().add(Panel_NewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 490));
-
-        Panel_SystemLogin.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_SystemLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
-        Panel_SystemLogin.setForeground(new java.awt.Color(255, 255, 255));
-
-        Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeExitDoor_32px.png"))); // NOI18N
-        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Label_ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Label_ExitButtonMouseClicked(evt);
-            }
-        });
-
-        Label_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px_2.png"))); // NOI18N
-
-        LabelUser.setBackground(new java.awt.Color(255, 255, 255));
-        LabelUser.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        LabelUser.setForeground(new java.awt.Color(255, 99, 71));
-        LabelUser.setText("Usuario:");
-
-        LabelUserIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_customer_32px_1.png"))); // NOI18N
-
-        TextUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        TextUser.setForeground(new java.awt.Color(130, 130, 130));
-        TextUser.setBorder(null);
-
-        SeparatorUser.setForeground(new java.awt.Color(130, 130, 130));
-
-        LabelPassword.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        LabelPassword.setForeground(new java.awt.Color(255, 99, 71));
-        LabelPassword.setText("Contraseña:");
-
-        LabelPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_Key_32px.png"))); // NOI18N
-
-        PasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        PasswordField.setForeground(new java.awt.Color(130, 130, 130));
-        PasswordField.setBorder(null);
-
-        SeparatorPassword.setForeground(new java.awt.Color(130, 130, 130));
-
-        Label_LoginButton.setBackground(new java.awt.Color(255, 99, 71));
-        Label_LoginButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        Label_LoginButton.setForeground(new java.awt.Color(255, 255, 255));
-        Label_LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label_LoginButton.setText("Ingresar");
-        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Label_LoginButton.setOpaque(true);
-        Label_LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Label_LoginButtonMouseClicked(evt);
-            }
-        });
-
-        Label_NewUserButton.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        Label_NewUserButton.setForeground(new java.awt.Color(255, 99, 71));
-        Label_NewUserButton.setText("Crear un nuevo Usuario");
-        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Label_NewUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Label_NewUserButtonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Panel_SystemLoginLayout = new javax.swing.GroupLayout(Panel_SystemLogin);
-        Panel_SystemLogin.setLayout(Panel_SystemLoginLayout);
-        Panel_SystemLoginLayout.setHorizontalGroup(
-            Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
-                        .addComponent(Label_UserIcon)
-                        .addGap(115, 115, 115))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
-                        .addComponent(Label_ExitButton)
-                        .addContainerGap())))
-            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
-                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(SeparatorPassword)
-                            .addComponent(SeparatorUser, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_SystemLoginLayout.createSequentialGroup()
-                                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(LabelPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelUser, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_SystemLoginLayout.createSequentialGroup()
-                                        .addComponent(LabelPasswordIcon)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
-                                .addComponent(LabelUserIcon2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextUser))))
-                    .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(Label_LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SystemLoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Label_NewUserButton)
-                .addGap(89, 89, 89))
-        );
-        Panel_SystemLoginLayout.setVerticalGroup(
-            Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_SystemLoginLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(Label_ExitButton)
-                .addGap(18, 18, 18)
-                .addComponent(Label_UserIcon)
-                .addGap(30, 30, 30)
-                .addComponent(LabelUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelUserIcon2)
-                    .addComponent(TextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SeparatorUser, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Panel_SystemLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelPasswordIcon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SeparatorPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(Label_LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Label_NewUserButton)
-                .addGap(40, 40, 40))
-        );
-
-        getContentPane().add(Panel_SystemLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

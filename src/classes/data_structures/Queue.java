@@ -1,10 +1,14 @@
 package classes.data_structures;
 
-interface QueueInterface<T>{
+interface QueueInterface<T> {
     public void Enqueue(T value);
+
     public T Dequeue();
+
     public T Peek();
+
     public boolean IsEmpty();
+
     public void Empty();
 }
 
@@ -60,15 +64,15 @@ class QueueNode<T> {
 /**
  * @param <T> that define the data type
  */
-public class Queue<T> implements QueueInterface<T>{
-    
+public class Queue<T> implements QueueInterface<T> {
+
     private QueueNode<T> head, tail;
     private int size;
 
     /**
      * Constructor of the class Queue
      */
-    public  Queue() {
+    public Queue() {
         this.size = 0;
         this.head = null;
         this.tail = null;
@@ -79,25 +83,25 @@ public class Queue<T> implements QueueInterface<T>{
      * 
      * @param head of the Queue to reconstructed
      */
-    public Queue(QueueNode<T> head){
+    public Queue(QueueNode<T> head) {
         this.head = head;
         this.size = 0;
         StablishQueue();
     }
-    
+
     /**
      * Function that reconstruct a Queue given a head QueueNode
      */
-    private void StablishQueue(){
+    private void StablishQueue() {
         QueueNode<T> stablishNode = this.head;
-        
-        if (this.head == null) this.tail = null;
-        else if (stablishNode.getNext() == null){
+
+        if (this.head == null)
+            this.tail = null;
+        else if (stablishNode.getNext() == null) {
             this.size = 1;
             this.tail = this.head;
-        }
-        else{
-            while(stablishNode.getNext() != null){
+        } else {
+            while (stablishNode.getNext() != null) {
                 stablishNode = stablishNode.getNext();
                 this.size++;
             }
@@ -105,7 +109,7 @@ public class Queue<T> implements QueueInterface<T>{
             this.tail = stablishNode;
         }
     }
-    
+
     /**
      * Function that say if the Queue is empty
      * 
@@ -184,7 +188,7 @@ public class Queue<T> implements QueueInterface<T>{
     /**
      * size is the value that stores how many nodes there is in the Queue
      * 
-     * @HasGetter 
+     * @HasGetter
      * @HasSetter
      * @return size of the Queue
      */
@@ -209,5 +213,5 @@ public class Queue<T> implements QueueInterface<T>{
     public void setHead(QueueNode<T> head) {
         this.head = head;
     }
-    
+
 }
