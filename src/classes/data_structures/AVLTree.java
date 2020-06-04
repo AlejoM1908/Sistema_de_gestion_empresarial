@@ -532,7 +532,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         InOrder(current.getLeft(), returnQueue);
         returnQueue.Enqueue(current.getKey());
         InOrder(current.getRight(), returnQueue);
-
     }
 
     public T Largest() {
@@ -588,6 +587,10 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
      */
     public T getLast() {
         return last;
+    }
+
+    public T getKey(TreeNode<T> current){
+        return current.getKey();
     }
 
 }

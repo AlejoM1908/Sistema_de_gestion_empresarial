@@ -1,22 +1,25 @@
 package classes.others;
 
 public class User implements Comparable<User> {
-    private int id;
     private String nickname, password, email, type;
 
-    public User(int id, String nickname, String password, String email, String type) {
-        this.id = id;
+    public User(String nickname, String password, String email, String type) {
         this.nickname = nickname;
         this.password = password;
         this.email = email;
         this.type = type;
     }
 
+    public User(String nickname, String password){
+        this.nickname = nickname;
+        this.password = password;
+    }
+
     @Override
     public int compareTo(User other) {
-        if (this.id < other.getId())
+        if (this.nickname.compareTo(other.getNickname()) < 0)
             return -1;
-        else if (this.id > other.getId())
+        else if (this.nickname.compareTo(other.getNickname()) > 0)
             return 1;
         else
             return 0;
@@ -24,10 +27,6 @@ public class User implements Comparable<User> {
 
     public void Encrypt() {
 
-    }
-
-    public int getId() {
-        return this.id;
     }
 
     public String getNickname() {
