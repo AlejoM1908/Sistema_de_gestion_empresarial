@@ -21,16 +21,25 @@ import org.json.simple.*;
 public class SystemLogin extends javax.swing.JFrame {
     static AVLTree<User> usersTree = new AVLTree<>();
     
+    
+    /*Cada vez que se corre el programa se carga la interfaz de login que auto
+    maticamente llama esta funcion. Esta funcion carga los usuarios del Json al
+    arbol una vez llama a la funcion parceUsers.
+    */
     private void ChargeUsers(){
+        //Este objeto nos permite leer el Json albergado, nos va a permitir hacer el parse a un objeto
         JSONParser parser = new JSONParser();
         
         try{
-            //Reading JSON file
+            //Reading JSON file, cargamos el dataset del Json en un objeto haciendo el parce respectivo
             Object obj = parser.parse(new FileReader("src/json_files/Users.json"));
- 
+            //Transferimos el objeto a un json array
             JSONArray list = (JSONArray) obj;
   
-            //Iterate over employee array
+            /*Iterate over employee array. Cojemos el array y para cada user en el Json,
+            cargamos por medio del parceUsers, un nuevo nodo con nickname,etc. al arbol
+            usersTree
+            */
             list.forEach(user -> parceUsers((JSONObject) user));
         }
         catch(FileNotFoundException e){
@@ -40,8 +49,9 @@ public class SystemLogin extends javax.swing.JFrame {
         catch(ParseException e){}
     }
     
+    //Carga en el arbol un nodo que viene del Json con el key de User
     public void parceUsers(JSONObject object){
-        //Getting User nickname from object
+        //Getting User nickname from object, making the parse
         String nickname = (String) object.get("Nickname");
         String password = (String) object.get("Password");
         String email = (String) object.get("Email");
@@ -50,14 +60,23 @@ public class SystemLogin extends javax.swing.JFrame {
         usersTree.Insert(new User(nickname, password, email, type));
     }
     
+    /*
+    Guarda el arbol en un Json
+    */
     private void SaveUsers(){
+        //Crea una cola y alberga en ella el arbol mediante funcion InOrder
         Queue<User> result = new Queue<>();
         usersTree.InOrder(usersTree.getRoot(), result);
+        //Arreglo Json de usuarios
         JSONArray usersArray = new JSONArray();
         
+        //Mientras la pila no se vacie
         while(!result.IsEmpty()){
+            
+            //guarda cada usuario de la pila en un usuario saveUser
             User saveUser = result.Dequeue();
             
+            //Objeto Json usuario base del arreglo de usuarios Json.
             JSONObject user = new JSONObject();
             
             user.put("Nickname", saveUser.getNickname());
@@ -147,7 +166,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Panel_NewUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
 
         Label_ReturnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_BackOrange_32px.png"))); // NOI18N
-        Label_ReturnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ReturnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Label_ReturnButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_ReturnButtonMouseClicked(evt);
@@ -166,6 +185,11 @@ public class SystemLogin extends javax.swing.JFrame {
         Text_NewUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         Text_NewUser.setForeground(new java.awt.Color(130, 130, 130));
         Text_NewUser.setBorder(null);
+        Text_NewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Text_NewUserActionPerformed(evt);
+            }
+        });
 
         Separator_NewUser.setForeground(new java.awt.Color(130, 130, 130));
 
@@ -178,6 +202,11 @@ public class SystemLogin extends javax.swing.JFrame {
         NewPasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         NewPasswordField.setForeground(new java.awt.Color(130, 130, 130));
         NewPasswordField.setBorder(null);
+        NewPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewPasswordFieldActionPerformed(evt);
+            }
+        });
 
         Separator_NewPassword.setForeground(new java.awt.Color(130, 130, 130));
 
@@ -190,6 +219,11 @@ public class SystemLogin extends javax.swing.JFrame {
         ConfirmNewPasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         ConfirmNewPasswordField.setForeground(new java.awt.Color(130, 130, 130));
         ConfirmNewPasswordField.setBorder(null);
+        ConfirmNewPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmNewPasswordFieldActionPerformed(evt);
+            }
+        });
 
         Separator_ConfirmNewPassword.setForeground(new java.awt.Color(130, 130, 130));
 
@@ -211,7 +245,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_CreateUserButton.setForeground(new java.awt.Color(255, 255, 255));
         Label_CreateUserButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_CreateUserButton.setText("Crear");
-        Label_CreateUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_CreateUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Label_CreateUserButton.setOpaque(true);
         Label_CreateUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -320,7 +354,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Panel_SystemLogin.setForeground(new java.awt.Color(255, 255, 255));
 
         Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeExitDoor_32px.png"))); // NOI18N
-        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Label_ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_ExitButtonMouseClicked(evt);
@@ -339,6 +373,11 @@ public class SystemLogin extends javax.swing.JFrame {
         TextUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         TextUser.setForeground(new java.awt.Color(130, 130, 130));
         TextUser.setBorder(null);
+        TextUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextUserActionPerformed(evt);
+            }
+        });
 
         SeparatorUser.setForeground(new java.awt.Color(130, 130, 130));
 
@@ -351,6 +390,11 @@ public class SystemLogin extends javax.swing.JFrame {
         PasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         PasswordField.setForeground(new java.awt.Color(130, 130, 130));
         PasswordField.setBorder(null);
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
 
         SeparatorPassword.setForeground(new java.awt.Color(130, 130, 130));
 
@@ -359,7 +403,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         Label_LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_LoginButton.setText("Ingresar");
-        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Label_LoginButton.setOpaque(true);
         Label_LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -370,7 +414,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_NewUserButton.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         Label_NewUserButton.setForeground(new java.awt.Color(255, 99, 71));
         Label_NewUserButton.setText("Crear un nuevo Usuario");
-        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Label_NewUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_NewUserButtonMouseClicked(evt);
@@ -505,6 +549,58 @@ public class SystemLogin extends javax.swing.JFrame {
     private void Label_CreateUserButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_CreateUserButtonMouseClicked
         usersTree.Insert(new User("root","0000","root@root.user.com","Master"));
         usersTree.Insert(new User("Admin","1234","iamtheadmin@admin.com","Master"));
+        
+        String nickname = Text_NewUser.getText();
+        String email = Text_Email.getText();
+        
+        char[] passwordToConvert = NewPasswordField.getPassword();
+        String password = "";
+        
+        for (int i=0; i<passwordToConvert.length; i++){
+            password += passwordToConvert[i];
+        }
+        
+        char[] confirmPasswordToConvert = ConfirmNewPasswordField.getPassword();
+        String confirmPassword = "";
+        
+        for (int i=0; i<confirmPasswordToConvert.length; i++){
+            confirmPassword += confirmPasswordToConvert[i];
+        }
+      
+        //alberga el key del nickname si el nickname ingresado ya existe, si no, alberga root
+        User foundedUser = usersTree.getKey(usersTree.Find(new User(nickname, password, email, "None"), usersTree.getRoot()));
+        
+        if (foundedUser.getNickname().compareTo(nickname) == 0){
+                
+                JOptionPane.showMessageDialog(null, "El usuario ingresado ya se encuentra registrado, intente con uno diferente.");
+                Text_NewUser.setText("");
+                Text_Email.setText("");
+                NewPasswordField.setText("");
+                ConfirmNewPasswordField.setText("");
+            
+        } else if (password != confirmPassword){
+            
+            usersTree.Insert(foundedUser);
+            SaveUsers();
+            
+            JOptionPane.showMessageDialog(null, "El usuario fue creado con exito");
+            
+            PrincipalInterface principal = new PrincipalInterface(foundedUser.getType());
+            this.setVisible(false);
+            principal.setVisible(true);
+            
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Las contraseñas ingresadas no coinciden.");
+            
+            NewPasswordField.setText("");
+            ConfirmNewPasswordField.setText("");
+                
+        }
+        
+        
+        
     }//GEN-LAST:event_Label_CreateUserButtonMouseClicked
 
     //Boton para volver al login
@@ -517,6 +613,27 @@ public class SystemLogin extends javax.swing.JFrame {
         ConfirmNewPasswordField.setText("");
         Text_Email.setText("");
     }//GEN-LAST:event_Label_ReturnButtonMouseClicked
+
+    private void TextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextUserActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void Text_NewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_NewUserActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Text_NewUserActionPerformed
+
+    private void NewPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewPasswordFieldActionPerformed
+
+    private void ConfirmNewPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmNewPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmNewPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments

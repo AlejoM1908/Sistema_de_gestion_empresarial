@@ -172,7 +172,7 @@
               <Image iconType="3" name="/images/Icon_BackOrange_32px.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -219,6 +219,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_NewUserActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="Separator_NewUser">
           <Properties>
@@ -257,6 +260,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewPasswordFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="Separator_NewPassword">
           <Properties>
@@ -295,6 +301,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmNewPasswordFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="Separator_ConfirmNewPassword">
           <Properties>
@@ -358,7 +367,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Crear"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -488,7 +497,7 @@
               <Image iconType="3" name="/images/Icon_OrangeExitDoor_32px.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -535,6 +544,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextUserActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="SeparatorUser">
           <Properties>
@@ -573,6 +585,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="SeparatorPassword">
           <Properties>
@@ -595,7 +610,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Ingresar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -613,7 +628,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Crear un nuevo Usuario"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
