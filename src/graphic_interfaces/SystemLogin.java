@@ -166,7 +166,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Panel_NewUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
 
         Label_ReturnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_BackOrange_32px.png"))); // NOI18N
-        Label_ReturnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_ReturnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_ReturnButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_ReturnButtonMouseClicked(evt);
@@ -501,6 +501,7 @@ public class SystemLogin extends javax.swing.JFrame {
 
     //Boton de salida
     private void Label_ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ExitButtonMouseClicked
+        SaveUsers();
         System.exit(0);
     }//GEN-LAST:event_Label_ExitButtonMouseClicked
 
@@ -519,6 +520,7 @@ public class SystemLogin extends javax.swing.JFrame {
         if (foundedUser.getNickname().compareTo(nickname) == 0){
             if (foundedUser.getPassword().compareTo(password) == 0){
                 PrincipalInterface principal = new PrincipalInterface(foundedUser.getType());
+                SaveUsers();
                 this.setVisible(false);
                 principal.setVisible(true);
                 
@@ -547,9 +549,6 @@ public class SystemLogin extends javax.swing.JFrame {
 
     //Boton para crear un nuevo usuario
     private void Label_CreateUserButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_CreateUserButtonMouseClicked
-        usersTree.Insert(new User("root","0000","root@root.user.com","Master"));
-        usersTree.Insert(new User("Admin","1234","iamtheadmin@admin.com","Master"));
-        
         String nickname = Text_NewUser.getText();
         String email = Text_Email.getText();
         
@@ -568,7 +567,8 @@ public class SystemLogin extends javax.swing.JFrame {
         }
       
         //alberga el key del nickname si el nickname ingresado ya existe, si no, alberga root
-        User foundedUser = usersTree.getKey(usersTree.Find(new User(nickname, password, email, "None"), usersTree.getRoot()));
+        User newUser = new User(nickname, password, email, "None");
+        User foundedUser = usersTree.getKey(usersTree.Find(newUser, usersTree.getRoot()));
         
         if (foundedUser.getNickname().compareTo(nickname) == 0){
                 
@@ -578,16 +578,20 @@ public class SystemLogin extends javax.swing.JFrame {
                 NewPasswordField.setText("");
                 ConfirmNewPasswordField.setText("");
             
-        } else if (password != confirmPassword){
+        } else if (password.compareTo(confirmPassword) == 0){
             
-            usersTree.Insert(foundedUser);
+            usersTree.Insert(newUser);
             SaveUsers();
             
             JOptionPane.showMessageDialog(null, "El usuario fue creado con exito");
             
-            PrincipalInterface principal = new PrincipalInterface(foundedUser.getType());
-            this.setVisible(false);
-            principal.setVisible(true);
+            Panel_NewUser.setVisible(false);
+            Panel_SystemLogin.setVisible(true);
+
+            Text_NewUser.setText("");
+            NewPasswordField.setText("");
+            ConfirmNewPasswordField.setText("");
+            Text_Email.setText("");
             
             
         } else {

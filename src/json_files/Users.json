@@ -1,14 +1,1 @@
-[
-    {
-        "Type":"Master",
-        "Email":"root@root.user.com",
-        "Nickname":"root",
-        "Password":"0000"
-    },
-    {
-        "Type":"Master",
-        "Email":"root@root.user.com",
-        "Nickname":"Master",
-        "Password":"login"
-    }
-]
+[{"Type":"Master","Email":"root@root.user.com","Nickname":"Master","Password":"login"},{"Type":"None","Email":"diego@gmail.com","Nickname":"diego","Password":"1789"},{"Type":"None","Email":"nico@gmail.com","Nickname":"nico","Password":"1415"},{"Type":"None","Email":"soypepe@email.com","Nickname":"pepe","Password":"12345"},{"Type":"Master","Email":"root@root.user.com","Nickname":"root","Password":"0000"},{"Type":"None","Email":"zulu@gmail.com","Nickname":"zulu","Password":"5656"}]

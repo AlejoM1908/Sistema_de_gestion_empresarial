@@ -169,7 +169,6 @@ class TreeNode<T> {
 public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> {
     private int size;
     private TreeNode<T> root;
-    private T last;
 
     /**
      * Constructor of the class BinarySearchTree
@@ -220,7 +219,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
             this.root = new TreeNode<T>(value);
             this.size++;
             this.root.setHeight(1);
-            this.last = value;
             return;
         }
 
@@ -237,8 +235,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
             insertNode.setLeft(newNode);
 
         this.size++;
-        if (this.last.compareTo(value) > 0)
-            this.last = value;
 
         UpdateHeight(newNode);
         Balance(newNode);
@@ -309,6 +305,7 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         }
 
         this.size--;
+
         UpdateHeight(this.root);
         Balance(this.root);
         return deleteNode.getKey();
@@ -578,15 +575,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
      */
     public int getSize() {
         return this.size;
-    }
-
-    /**
-     * last is the biggest value in the AVLTree
-     * 
-     * @return last value
-     */
-    public T getLast() {
-        return last;
     }
 
     public T getKey(TreeNode<T> current){

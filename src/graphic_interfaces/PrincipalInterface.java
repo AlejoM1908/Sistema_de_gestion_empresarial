@@ -37,7 +37,8 @@ public class PrincipalInterface extends javax.swing.JFrame {
                 
                 break;
             
-            case "Ninguno":
+            case "None":
+                
                 break;
         }
     }
@@ -54,8 +55,7 @@ public class PrincipalInterface extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Panel_MenuBar = new javax.swing.JPanel();
         Label_ExitButton = new javax.swing.JLabel();
-        Panel_Home = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        Panel_MasterOptions = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,6 +67,18 @@ public class PrincipalInterface extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        Panel_Dashboard = new javax.swing.JPanel();
+        Panel_Users = new javax.swing.JPanel();
+        Panel_Clients = new javax.swing.JPanel();
+        Panel_Suppliers = new javax.swing.JPanel();
+        Panel_Products = new javax.swing.JPanel();
+        Panel_Sells = new javax.swing.JPanel();
+        Panel_Buys = new javax.swing.JPanel();
+        Panel_Production = new javax.swing.JPanel();
+        Panel_Inventory = new javax.swing.JPanel();
+        Panel_Reports = new javax.swing.JPanel();
 
         jLabel11.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,7 +104,7 @@ public class PrincipalInterface extends javax.swing.JFrame {
         Panel_MenuBarLayout.setHorizontalGroup(
             Panel_MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_MenuBarLayout.createSequentialGroup()
-                .addContainerGap(636, Short.MAX_VALUE)
+                .addContainerGap(796, Short.MAX_VALUE)
                 .addComponent(Label_ExitButton)
                 .addContainerGap())
         );
@@ -101,25 +113,9 @@ public class PrincipalInterface extends javax.swing.JFrame {
             .addComponent(Label_ExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Panel_MenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 680, 40));
+        getContentPane().add(Panel_MenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 40));
 
-        Panel_Home.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
-
-        javax.swing.GroupLayout Panel_HomeLayout = new javax.swing.GroupLayout(Panel_Home);
-        Panel_Home.setLayout(Panel_HomeLayout);
-        Panel_HomeLayout.setHorizontalGroup(
-            Panel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 676, Short.MAX_VALUE)
-        );
-        Panel_HomeLayout.setVerticalGroup(
-            Panel_HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(Panel_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 680, 510));
-
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        Panel_MasterOptions.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setBackground(new java.awt.Color(80, 80, 80));
         jLabel1.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
@@ -184,36 +180,52 @@ public class PrincipalInterface extends javax.swing.JFrame {
         jLabel12.setText("    Reportes");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jLabel13.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam.png"))); // NOI18N
+        jLabel13.setText("   Usuarios");
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel14.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteProduction.png"))); // NOI18N
+        jLabel14.setText("   Produccion");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout Panel_MasterOptionsLayout = new javax.swing.GroupLayout(Panel_MasterOptions);
+        Panel_MasterOptions.setLayout(Panel_MasterOptionsLayout);
+        Panel_MasterOptionsLayout.setHorizontalGroup(
+            Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
+                        .addGroup(Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        Panel_MasterOptionsLayout.setVerticalGroup(
+            Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -227,13 +239,175 @@ public class PrincipalInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 550));
+        getContentPane().add(Panel_MasterOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 650));
+
+        Panel_Dashboard.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Dashboard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_DashboardLayout = new javax.swing.GroupLayout(Panel_Dashboard);
+        Panel_Dashboard.setLayout(Panel_DashboardLayout);
+        Panel_DashboardLayout.setHorizontalGroup(
+            Panel_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_DashboardLayout.setVerticalGroup(
+            Panel_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Users.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Users.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_UsersLayout = new javax.swing.GroupLayout(Panel_Users);
+        Panel_Users.setLayout(Panel_UsersLayout);
+        Panel_UsersLayout.setHorizontalGroup(
+            Panel_UsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_UsersLayout.setVerticalGroup(
+            Panel_UsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Users, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Clients.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Clients.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_ClientsLayout = new javax.swing.GroupLayout(Panel_Clients);
+        Panel_Clients.setLayout(Panel_ClientsLayout);
+        Panel_ClientsLayout.setHorizontalGroup(
+            Panel_ClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_ClientsLayout.setVerticalGroup(
+            Panel_ClientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Clients, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Suppliers.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Suppliers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_SuppliersLayout = new javax.swing.GroupLayout(Panel_Suppliers);
+        Panel_Suppliers.setLayout(Panel_SuppliersLayout);
+        Panel_SuppliersLayout.setHorizontalGroup(
+            Panel_SuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_SuppliersLayout.setVerticalGroup(
+            Panel_SuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Suppliers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Products.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Products.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_ProductsLayout = new javax.swing.GroupLayout(Panel_Products);
+        Panel_Products.setLayout(Panel_ProductsLayout);
+        Panel_ProductsLayout.setHorizontalGroup(
+            Panel_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_ProductsLayout.setVerticalGroup(
+            Panel_ProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Products, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Sells.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Sells.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_SellsLayout = new javax.swing.GroupLayout(Panel_Sells);
+        Panel_Sells.setLayout(Panel_SellsLayout);
+        Panel_SellsLayout.setHorizontalGroup(
+            Panel_SellsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_SellsLayout.setVerticalGroup(
+            Panel_SellsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Sells, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Buys.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Buys.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_BuysLayout = new javax.swing.GroupLayout(Panel_Buys);
+        Panel_Buys.setLayout(Panel_BuysLayout);
+        Panel_BuysLayout.setHorizontalGroup(
+            Panel_BuysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_BuysLayout.setVerticalGroup(
+            Panel_BuysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Buys, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Production.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Production.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_ProductionLayout = new javax.swing.GroupLayout(Panel_Production);
+        Panel_Production.setLayout(Panel_ProductionLayout);
+        Panel_ProductionLayout.setHorizontalGroup(
+            Panel_ProductionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_ProductionLayout.setVerticalGroup(
+            Panel_ProductionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Production, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Inventory.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Inventory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_InventoryLayout = new javax.swing.GroupLayout(Panel_Inventory);
+        Panel_Inventory.setLayout(Panel_InventoryLayout);
+        Panel_InventoryLayout.setHorizontalGroup(
+            Panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_InventoryLayout.setVerticalGroup(
+            Panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
+
+        Panel_Reports.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Reports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        javax.swing.GroupLayout Panel_ReportsLayout = new javax.swing.GroupLayout(Panel_Reports);
+        Panel_Reports.setLayout(Panel_ReportsLayout);
+        Panel_ReportsLayout.setHorizontalGroup(
+            Panel_ReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 836, Short.MAX_VALUE)
+        );
+        Panel_ReportsLayout.setVerticalGroup(
+            Panel_ReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel_Reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,12 +453,24 @@ public class PrincipalInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_ExitButton;
-    private javax.swing.JPanel Panel_Home;
+    private javax.swing.JPanel Panel_Buys;
+    private javax.swing.JPanel Panel_Clients;
+    private javax.swing.JPanel Panel_Dashboard;
+    private javax.swing.JPanel Panel_Inventory;
+    private javax.swing.JPanel Panel_MasterOptions;
     private javax.swing.JPanel Panel_MenuBar;
+    private javax.swing.JPanel Panel_Production;
+    private javax.swing.JPanel Panel_Products;
+    private javax.swing.JPanel Panel_Reports;
+    private javax.swing.JPanel Panel_Sells;
+    private javax.swing.JPanel Panel_Suppliers;
+    private javax.swing.JPanel Panel_Users;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -293,6 +479,5 @@ public class PrincipalInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
