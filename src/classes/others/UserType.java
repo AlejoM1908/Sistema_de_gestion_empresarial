@@ -1,7 +1,7 @@
 package classes.others;
 
 public class UserType implements Comparable<UserType> {
-    private boolean inventory,in_add;
+    private boolean inventory,in_add,in_update;
 
 
     @Override

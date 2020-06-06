@@ -236,8 +236,8 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
 
         this.size++;
 
-        UpdateHeight(newNode);
-        Balance(newNode);
+        UpdateHeight(this.root);
+        Balance(this.root);
     }
 
     /**
@@ -344,155 +344,171 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         }
     }
 
+    /**
+     * 
+     * @param node
+     * @return
+     */
     private int Height(TreeNode<T> node) {
-        if (node == null)
+        if(node == null)
             return 0;
-        if (node.getLeft() == null && node.getRight() == null)
-            return 1;
 
-        return 1 + Math.max(Height(node.getLeft()), Height(node.getRight()));
+        return node.getHeight();
     }
 
+    /**
+     * 
+     * @param first
+     * @param second
+     * @return
+     */
+    private int Max (int first, int second){
+        if (first > second)
+            return first;
+        else 
+            return second;
+    }
+
+    /**
+     * 
+     * @param updateNode
+     */
     private void UpdateHeight(TreeNode<T> updateNode) {
         if (updateNode == null)
             return;
 
-        int leftHeight = 0;
-        int rightHeight = 0;
+        TreeNode<T> leftNode = updateNode.getLeft();
+        TreeNode<T> rightNode = updateNode.getRight();
 
-        if (updateNode.getLeft() != null)
-            leftHeight = Height(updateNode.getLeft());
-        if (updateNode.getRight() != null)
-            rightHeight = Height(updateNode.getRight());
+        UpdateHeight(leftNode);
+        UpdateHeight(rightNode);
 
-        updateNode.setHeight(1 + Math.max(leftHeight, rightHeight));
-
-        UpdateHeight(updateNode.getParent());
+        updateNode.setHeight(1 + Max(Height(leftNode), Height(rightNode)));
     }
 
+    /**
+     * 
+     * @param balanceNode
+     */
     private void Balance(TreeNode<T> balanceNode) {
         if (balanceNode == null)
             return;
 
+        Balance(balanceNode.getLeft());
+        Balance(balanceNode.getRight());
+
         int balanceFactor = CalculateBalanceFactor(balanceNode);
 
-        if (balanceFactor >= 2)
+        if (balanceFactor <= -2 || balanceFactor >= 2)
             ExecuteRotations(balanceNode);
-        Balance(balanceNode.getParent());
     }
-
+    
+    /**
+     * 
+     * @param node
+     * @return
+     */
     private int CalculateBalanceFactor(TreeNode<T> node) {
-        int leftHeight = 0;
-        int rightHeight = 0;
+        if (node == null)
+            return 0;
 
-        if (node.getLeft() != null)
-            leftHeight = Height(node.getLeft());
-        if (node.getRight() != null)
-            rightHeight = Height(node.getRight());
+        int leftHeight = Height(node.getLeft());
+        int rightHeight = Height(node.getRight());
 
-        return Math.abs(leftHeight - rightHeight);
+        return leftHeight - rightHeight;
     }
 
+    /**
+     * 
+     * @param unbalancedNode
+     */
     private void ExecuteRotations(TreeNode<T> unbalancedNode) {
-        String unbalancedType = "";
-        int leftHeight = 0, rightHeight = 0;
+        int balanceFactor = CalculateBalanceFactor(unbalancedNode);
 
-        if (unbalancedNode.getLeft() != null)
-            leftHeight = unbalancedNode.getLeft().getHeight();
-        if (unbalancedNode.getRight() != null)
-            rightHeight = unbalancedNode.getRight().getHeight();
+        if (balanceFactor >= 2){
+            balanceFactor = CalculateBalanceFactor(unbalancedNode.getLeft());
 
-        if (leftHeight > rightHeight) {
-            int left_leftHeight = 0, left_rightHeight = 0;
-
-            if (unbalancedNode.getLeft().getLeft() != null)
-                left_leftHeight = unbalancedNode.getLeft().getLeft().getHeight();
-            if (unbalancedNode.getLeft().getRight() != null)
-                left_rightHeight = unbalancedNode.getLeft().getRight().getHeight();
-
-            if (left_leftHeight > left_rightHeight)
-                unbalancedType = "Left_Left";
-            else
-                unbalancedType = "Right_Left";
-        } else {
-            int right_leftHeight = 0, right_rightHeight = 0;
-
-            if (unbalancedNode.getRight().getLeft() != null)
-                right_leftHeight = unbalancedNode.getRight().getLeft().getHeight();
-            if (unbalancedNode.getRight().getRight() != null)
-                right_rightHeight = unbalancedNode.getRight().getRight().getHeight();
-
-            if (right_leftHeight > right_rightHeight)
-                unbalancedType = "Left_Right";
-            else
-                unbalancedType = "Right_Right";
-        }
-
-        switch (unbalancedType) {
-            case "Left_Left":
-                RotateRight(unbalancedNode.getLeft());
-                break;
-
-            case "Right_Right":
-                RotateLeft(unbalancedNode.getRight());
-                break;
-
-            case "Right_Left":
-                RotateLeft(unbalancedNode.getRight().getLeft());
-                RotateRight(unbalancedNode.getRight());
-                break;
-
-            case "Left_Right":
-                RotateRight(unbalancedNode.getLeft().getRight());
+            // Left-Left case
+            if (balanceFactor >=1){
+                RotateRight(unbalancedNode);
+            }
+            // Left-Right case
+            else{
                 RotateLeft(unbalancedNode.getLeft());
-                break;
+                RotateRight(unbalancedNode);
+            }
+        }
+        else{
+            balanceFactor = CalculateBalanceFactor(unbalancedNode.getRight());
+
+            //Right-Left
+            if (balanceFactor >= 1){
+                RotateRight(unbalancedNode.getRight());
+                RotateLeft(unbalancedNode);
+            }
+            //Right-Right
+            else{
+                RotateLeft(unbalancedNode);
+            }
         }
     }
 
-    private void RotateLeft(TreeNode<T> pivotNode) {
-        TreeNode<T> temporalNode = pivotNode.getLeft();
+    /**
+     * 
+     * @param unbalancedNode
+     */
+    private void RotateLeft(TreeNode<T> unbalancedNode) {
 
-        // Rotating the unbalanced node to the left
-        pivotNode.setLeft(pivotNode.getParent());
-        pivotNode.setParent(pivotNode.getParent().getParent());
-        pivotNode.getLeft().setParent(pivotNode);
+        TreeNode<T> rightNode = unbalancedNode.getRight();
+        TreeNode<T> temporalNode = rightNode.getLeft();
+        
+        rightNode.setLeft(unbalancedNode);
+        unbalancedNode.setRight(temporalNode);
 
-        // Cheking if the unbalanced node was at Right or Left of his parent, and
-        // placing the pointer in the right position
-        if (pivotNode.getParent() != null) {
-            if (pivotNode.getKey().compareTo((T) pivotNode.getParent().getKey()) > 0) {
-                pivotNode.getParent().setRight(pivotNode);
-            } else if (pivotNode.getKey().compareTo((T) pivotNode.getParent().getKey()) < 0) {
-                pivotNode.getParent().setLeft(pivotNode);
-            }
-        } else
-            this.root = pivotNode;
+        if (unbalancedNode.getParent() != null){
+            TreeNode<T> unbalancedParent = unbalancedNode.getParent();
 
-        // Placing the left subtree of the pivotNote as right node of the rotated one
-        pivotNode.getLeft().setRight(temporalNode);
+            if (unbalancedParent.getKey().compareTo(unbalancedNode.getKey()) < 0)
+                unbalancedParent.setRight(rightNode);
+            else
+                unbalancedParent.setLeft(rightNode);
+        }
+        else this.root = rightNode;
+
+        rightNode.setParent(unbalancedNode.getParent());
+        unbalancedNode.setParent(rightNode);
+        if (temporalNode != null) temporalNode.setParent(unbalancedNode);
+
+        UpdateHeight(this.root);
+        
     }
 
-    private void RotateRight(TreeNode<T> pivotNode) {
-        TreeNode<T> temporalNode = pivotNode.getRight();
+    /**
+     * 
+     * @param unbalancedNode
+     */
+    private void RotateRight(TreeNode<T> unbalancedNode) {
+        TreeNode<T> leftNode = unbalancedNode.getLeft();
+        TreeNode<T> temporalNode = leftNode.getRight();
 
-        // Rotating the unbalanced node to the left
-        pivotNode.setRight(pivotNode.getParent());
-        pivotNode.setParent(pivotNode.getParent().getParent());
-        pivotNode.getRight().setParent(pivotNode);
+        leftNode.setRight(unbalancedNode);
+        unbalancedNode.setLeft(temporalNode);
 
-        // Cheking if the unbalanced node was at Right or Left of his parent, and
-        // placing the pointer in the right position
-        if (pivotNode.getParent() != null) {
-            if (pivotNode.getKey().compareTo((T) pivotNode.getParent().getKey()) > 0) {
-                pivotNode.getParent().setRight(pivotNode);
-            } else if (pivotNode.getKey().compareTo((T) pivotNode.getParent().getKey()) < 0) {
-                pivotNode.getParent().setLeft(pivotNode);
-            }
-        } else
-            this.root = pivotNode;
+        if (unbalancedNode.getParent() != null){
+            TreeNode<T> unbalancedParent = unbalancedNode.getParent();
 
-        // Placing the left subtree of the pivotNote as right node of the rotated one
-        pivotNode.getRight().setLeft(temporalNode);
+            if (unbalancedParent.getKey().compareTo(unbalancedNode.getKey()) < 0)
+                unbalancedParent.setRight(leftNode);
+            else
+                unbalancedParent.setLeft(leftNode);
+        }
+        else this.root = leftNode;
+
+        leftNode.setParent(unbalancedNode.getParent());
+        unbalancedNode.setParent(leftNode);
+        if (temporalNode != null) temporalNode.setParent(unbalancedNode);
+        
+        UpdateHeight(this.root);
     }
 
     /**
@@ -529,10 +545,6 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         InOrder(current.getLeft(), returnQueue);
         returnQueue.Enqueue(current.getKey());
         InOrder(current.getRight(), returnQueue);
-    }
-
-    public T Largest() {
-        return null;
     }
 
     /**
@@ -577,6 +589,11 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         return this.size;
     }
 
+    /**
+     * 
+     * @param current
+     * @return
+     */
     public T getKey(TreeNode<T> current){
         return current.getKey();
     }

@@ -72,7 +72,7 @@
         <Component class="javax.swing.JLabel" name="Label_ExitButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_ExitDoorWhite_32px.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteExitDoor_32px.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Mano"/>
@@ -194,7 +194,7 @@
               <Color blue="33" green="61" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_OrangeDashboard.png"/>
+              <Image iconType="3" name="/images/Icon_OrangeDashboard_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Tablero"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -211,7 +211,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteTeam.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteTeam_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Proveedores"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -228,7 +228,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteTeam.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteTeam_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Clientes"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -245,7 +245,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteTag.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteTag_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Productos"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -273,7 +273,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteSell.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteSell_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="     Ventas"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -290,7 +290,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteSell.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteSell_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="     Compras"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -307,7 +307,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteInventory.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteInventory_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Inventario"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -324,7 +324,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteReport.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteReport_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="    Reportes"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -341,7 +341,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteTeam.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteTeam_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Usuarios"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -358,7 +358,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Icon_WhiteProduction.png"/>
+              <Image iconType="3" name="/images/Icon_WhiteProduction_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Produccion"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

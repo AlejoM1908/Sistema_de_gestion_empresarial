@@ -165,7 +165,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Panel_NewUser.setBackground(new java.awt.Color(255, 255, 255));
         Panel_NewUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
 
-        Label_ReturnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_BackOrange_32px.png"))); // NOI18N
+        Label_ReturnButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeBack_32px.png"))); // NOI18N
         Label_ReturnButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_ReturnButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,14 +173,14 @@ public class SystemLogin extends javax.swing.JFrame {
             }
         });
 
-        Label_NewUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px.png"))); // NOI18N
+        Label_NewUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeUser_96px.png"))); // NOI18N
 
         Label_NewUser.setBackground(new java.awt.Color(255, 255, 255));
         Label_NewUser.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         Label_NewUser.setForeground(new java.awt.Color(255, 99, 71));
         Label_NewUser.setText("Nuevo Usuario:");
 
-        Label_NewUserIcon_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_32px.png"))); // NOI18N
+        Label_NewUserIcon_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeUser_32px.png"))); // NOI18N
 
         Text_NewUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         Text_NewUser.setForeground(new java.awt.Color(130, 130, 130));
@@ -197,7 +197,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_NewPassword.setForeground(new java.awt.Color(255, 99, 71));
         Label_NewPassword.setText("Nueva Contraseña:");
 
-        Label_NewPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_Key_32px.png"))); // NOI18N
+        Label_NewPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeKey_32px.png"))); // NOI18N
 
         NewPasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         NewPasswordField.setForeground(new java.awt.Color(130, 130, 130));
@@ -214,7 +214,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_ConfirmNewPassword.setForeground(new java.awt.Color(255, 99, 71));
         Label_ConfirmNewPassword.setText("Confirmar Contraseña:");
 
-        Label_ConfirmNewPassword_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_Key_32px.png"))); // NOI18N
+        Label_ConfirmNewPassword_02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeKey_32px.png"))); // NOI18N
 
         ConfirmNewPasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         ConfirmNewPasswordField.setForeground(new java.awt.Color(130, 130, 130));
@@ -245,7 +245,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_CreateUserButton.setForeground(new java.awt.Color(255, 255, 255));
         Label_CreateUserButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_CreateUserButton.setText("Crear");
-        Label_CreateUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_CreateUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_CreateUserButton.setOpaque(true);
         Label_CreateUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -354,21 +354,21 @@ public class SystemLogin extends javax.swing.JFrame {
         Panel_SystemLogin.setForeground(new java.awt.Color(255, 255, 255));
 
         Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeExitDoor_32px.png"))); // NOI18N
-        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_ExitButtonMouseClicked(evt);
             }
         });
 
-        Label_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_96px.png"))); // NOI18N
+        Label_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeUser_96px.png"))); // NOI18N
 
         LabelUser.setBackground(new java.awt.Color(255, 255, 255));
         LabelUser.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         LabelUser.setForeground(new java.awt.Color(255, 99, 71));
         LabelUser.setText("Usuario:");
 
-        LabelUserIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_User_32px.png"))); // NOI18N
+        LabelUserIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeUser_32px.png"))); // NOI18N
 
         TextUser.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         TextUser.setForeground(new java.awt.Color(130, 130, 130));
@@ -385,7 +385,7 @@ public class SystemLogin extends javax.swing.JFrame {
         LabelPassword.setForeground(new java.awt.Color(255, 99, 71));
         LabelPassword.setText("Contraseña:");
 
-        LabelPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon_Key_32px.png"))); // NOI18N
+        LabelPasswordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeKey_32px.png"))); // NOI18N
 
         PasswordField.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         PasswordField.setForeground(new java.awt.Color(130, 130, 130));
@@ -403,7 +403,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         Label_LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_LoginButton.setText("Ingresar");
-        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_LoginButton.setOpaque(true);
         Label_LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -414,7 +414,7 @@ public class SystemLogin extends javax.swing.JFrame {
         Label_NewUserButton.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         Label_NewUserButton.setForeground(new java.awt.Color(255, 99, 71));
         Label_NewUserButton.setText("Crear un nuevo Usuario");
-        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Label_NewUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_NewUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_NewUserButtonMouseClicked(evt);

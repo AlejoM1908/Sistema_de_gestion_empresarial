@@ -91,7 +91,7 @@ public class PrincipalInterface extends javax.swing.JFrame {
 
         Panel_MenuBar.setBackground(new java.awt.Color(255, 97, 50));
 
-        Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_ExitDoorWhite_32px.png"))); // NOI18N
+        Label_ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteExitDoor_32px.png"))); // NOI18N
         Label_ExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,25 +130,25 @@ public class PrincipalInterface extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 97, 51));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeDashboard.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeDashboard_32px.png"))); // NOI18N
         jLabel3.setText("   Tablero");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
         jLabel4.setText("   Proveedores");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
         jLabel5.setText("   Clientes");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel6.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTag.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTag_32px.png"))); // NOI18N
         jLabel6.setText("   Productos");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -158,37 +158,37 @@ public class PrincipalInterface extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
         jLabel8.setText("     Ventas");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel9.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
         jLabel9.setText("     Compras");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel10.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteInventory.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteInventory_32px.png"))); // NOI18N
         jLabel10.setText("   Inventario");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel12.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteReport.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteReport_32px.png"))); // NOI18N
         jLabel12.setText("    Reportes");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel13.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
         jLabel13.setText("   Usuarios");
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel14.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteProduction.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteProduction_32px.png"))); // NOI18N
         jLabel14.setText("   Produccion");
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
