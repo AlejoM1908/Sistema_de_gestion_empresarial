@@ -194,6 +194,9 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
      * @return pointer of the found node
      */
     public TreeNode<T> Find(T findKey, TreeNode<T> currentNode) {
+        if (currentNode == null)
+            return null;
+            
         if (currentNode.getKey().compareTo(findKey) == 0)
             return currentNode;
 
@@ -234,7 +237,7 @@ public class AVLTree<T extends Comparable<T>> implements BinaryTreeInterface<T> 
         else
             insertNode.setLeft(newNode);
 
-        this.size++;
+        this.size += 1;
 
         UpdateHeight(this.root);
         Balance(this.root);
