@@ -25,10 +25,6 @@ public class User implements Comparable<User> {
             return 0;
     }
 
-    public void Encrypt() {
-
-    }
-
     public String getNickname() {
         return nickname;
     }

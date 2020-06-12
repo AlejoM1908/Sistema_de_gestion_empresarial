@@ -5,42 +5,53 @@
  */
 package graphic_interfaces;
 
+import classes.data_structures.*;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import classes.others.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 /**
  *
  * @author danie
  */
 public class PrincipalInterface extends javax.swing.JFrame {
-
+    private AVLTree<User> usersTree;
+    private User logedUser;
+    private int pressedButton;
+    private int mouseX, mouseY;
+    
     /**
      * Creates new form PrincipalInterface
      */
-    private PrincipalInterface(){
+    public PrincipalInterface() {
         initComponents();
+        this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/Icon_App.png")).getImage());
+        this.getContentPane().setBackground(new Color(255,255,255));
     }
     
     /**
      * Creates new form PrincipalInterface
      * @param userType
      */
-    public PrincipalInterface(String userType) {
+    public PrincipalInterface(User user) {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/Icon_App.png")).getImage());
+        this.getContentPane().setBackground(new Color(255,255,255));
         
-        switch(userType){
-            case "Master":
-                
-                break;
-            
-            case "None":
-                
-                break;
-        }
+        this.logedUser = user;
+        Label_WelcomeMessage.setText("Bienvenido al sistema, " + logedUser.getNickname());
+        PanelsOff();
+        pressedButton = 0;
     }
 
     /**
@@ -55,21 +66,23 @@ public class PrincipalInterface extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Panel_MenuBar = new javax.swing.JPanel();
         Label_ExitButton = new javax.swing.JLabel();
-        Panel_MasterOptions = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        Panel_OptionsButtons = new javax.swing.JPanel();
+        Label_MenuTitle = new javax.swing.JLabel();
+        Label_HomeTitle = new javax.swing.JLabel();
+        Label_DashboardButton = new javax.swing.JLabel();
+        Label_UsersButton = new javax.swing.JLabel();
+        Label_ClientsButton = new javax.swing.JLabel();
+        Label_SuppliersButton = new javax.swing.JLabel();
+        Label_ProductsButton = new javax.swing.JLabel();
+        Label_OperacionesMenu = new javax.swing.JLabel();
+        Label_SellsButton = new javax.swing.JLabel();
+        Label_BuysButton = new javax.swing.JLabel();
+        Label_ProductionButton = new javax.swing.JLabel();
+        Label_InventoryButton = new javax.swing.JLabel();
+        Label_ReportsButton = new javax.swing.JLabel();
         Panel_Dashboard = new javax.swing.JPanel();
+        Label_WelcomeMessage = new javax.swing.JLabel();
         Panel_Users = new javax.swing.JPanel();
         Panel_Clients = new javax.swing.JPanel();
         Panel_Suppliers = new javax.swing.JPanel();
@@ -99,168 +112,241 @@ public class PrincipalInterface extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel1MouseDragged(evt);
+            }
+        });
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Panel_MenuBarLayout = new javax.swing.GroupLayout(Panel_MenuBar);
         Panel_MenuBar.setLayout(Panel_MenuBarLayout);
         Panel_MenuBarLayout.setHorizontalGroup(
             Panel_MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_MenuBarLayout.createSequentialGroup()
-                .addContainerGap(796, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label_ExitButton)
                 .addContainerGap())
         );
         Panel_MenuBarLayout.setVerticalGroup(
             Panel_MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Label_ExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(Panel_MenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 40));
 
-        Panel_MasterOptions.setBackground(new java.awt.Color(102, 102, 102));
+        Panel_OptionsButtons.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel1.setBackground(new java.awt.Color(80, 80, 80));
-        jLabel1.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sistema de gestion empresarial");
-        jLabel1.setOpaque(true);
+        Label_MenuTitle.setBackground(new java.awt.Color(80, 80, 80));
+        Label_MenuTitle.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        Label_MenuTitle.setForeground(new java.awt.Color(255, 255, 255));
+        Label_MenuTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_MenuTitle.setText("Sistema de gestion empresarial");
+        Label_MenuTitle.setOpaque(true);
 
-        jLabel2.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("Pagina Principal");
+        Label_HomeTitle.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        Label_HomeTitle.setForeground(new java.awt.Color(153, 153, 153));
+        Label_HomeTitle.setText("Pagina Principal");
 
-        jLabel3.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 97, 51));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeDashboard_32px.png"))); // NOI18N
-        jLabel3.setText("   Tablero");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_DashboardButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_DashboardButton.setForeground(new java.awt.Color(255, 97, 51));
+        Label_DashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_OrangeDashboard_32px.png"))); // NOI18N
+        Label_DashboardButton.setText("   Tablero");
+        Label_DashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_DashboardButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_DashboardButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
-        jLabel4.setText("   Proveedores");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_UsersButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_UsersButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_UsersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
+        Label_UsersButton.setText("   Usuarios");
+        Label_UsersButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_UsersButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_UsersButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
-        jLabel5.setText("   Clientes");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ClientsButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_ClientsButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_ClientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
+        Label_ClientsButton.setText("   Clientes");
+        Label_ClientsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ClientsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_ClientsButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTag_32px.png"))); // NOI18N
-        jLabel6.setText("   Productos");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_SuppliersButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_SuppliersButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_SuppliersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
+        Label_SuppliersButton.setText("   Proveedores");
+        Label_SuppliersButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_SuppliersButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_SuppliersButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Operaciones");
+        Label_ProductsButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_ProductsButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_ProductsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTag_32px.png"))); // NOI18N
+        Label_ProductsButton.setText("   Productos");
+        Label_ProductsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ProductsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_ProductsButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel8.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
-        jLabel8.setText("     Ventas");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_OperacionesMenu.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        Label_OperacionesMenu.setForeground(new java.awt.Color(153, 153, 153));
+        Label_OperacionesMenu.setText("Operaciones");
 
-        jLabel9.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
-        jLabel9.setText("     Compras");
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_SellsButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_SellsButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_SellsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
+        Label_SellsButton.setText("     Ventas");
+        Label_SellsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_SellsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_SellsButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel10.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteInventory_32px.png"))); // NOI18N
-        jLabel10.setText("   Inventario");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_BuysButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_BuysButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_BuysButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"))); // NOI18N
+        Label_BuysButton.setText("     Compras");
+        Label_BuysButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_BuysButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_BuysButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel12.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteReport_32px.png"))); // NOI18N
-        jLabel12.setText("    Reportes");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ProductionButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_ProductionButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_ProductionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteProduction_32px.png"))); // NOI18N
+        Label_ProductionButton.setText("   Produccion");
+        Label_ProductionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ProductionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_ProductionButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel13.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"))); // NOI18N
-        jLabel13.setText("   Usuarios");
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_InventoryButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_InventoryButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_InventoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteInventory_32px.png"))); // NOI18N
+        Label_InventoryButton.setText("   Inventario");
+        Label_InventoryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_InventoryButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_InventoryButtonMouseClicked(evt);
+            }
+        });
 
-        jLabel14.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteProduction_32px.png"))); // NOI18N
-        jLabel14.setText("   Produccion");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ReportsButton.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_ReportsButton.setForeground(new java.awt.Color(255, 255, 255));
+        Label_ReportsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Icon_WhiteReport_32px.png"))); // NOI18N
+        Label_ReportsButton.setText("    Reportes");
+        Label_ReportsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ReportsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_ReportsButtonMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout Panel_MasterOptionsLayout = new javax.swing.GroupLayout(Panel_MasterOptions);
-        Panel_MasterOptions.setLayout(Panel_MasterOptionsLayout);
-        Panel_MasterOptionsLayout.setHorizontalGroup(
-            Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
-                        .addGroup(Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
+        javax.swing.GroupLayout Panel_OptionsButtonsLayout = new javax.swing.GroupLayout(Panel_OptionsButtons);
+        Panel_OptionsButtons.setLayout(Panel_OptionsButtonsLayout);
+        Panel_OptionsButtonsLayout.setHorizontalGroup(
+            Panel_OptionsButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Label_MenuTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .addGroup(Panel_OptionsButtonsLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(Panel_OptionsButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_DashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Panel_OptionsButtonsLayout.createSequentialGroup()
+                        .addGroup(Panel_OptionsButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_HomeTitle)
+                            .addComponent(Label_OperacionesMenu))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Label_UsersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_ClientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_SuppliersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_ProductsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_SellsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_BuysButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_ProductionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_InventoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Label_ReportsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        Panel_MasterOptionsLayout.setVerticalGroup(
-            Panel_MasterOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_MasterOptionsLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+        Panel_OptionsButtonsLayout.setVerticalGroup(
+            Panel_OptionsButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_OptionsButtonsLayout.createSequentialGroup()
+                .addComponent(Label_MenuTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(Label_HomeTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_DashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_UsersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_ClientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_SuppliersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_ProductsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(Label_OperacionesMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_SellsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_BuysButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_ProductionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_InventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label_ReportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(Panel_MasterOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 650));
+        getContentPane().add(Panel_OptionsButtons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 650));
 
         Panel_Dashboard.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Dashboard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+
+        Label_WelcomeMessage.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
+        Label_WelcomeMessage.setForeground(new java.awt.Color(255, 97, 51));
+        Label_WelcomeMessage.setText("Bienvenido al sistema,");
 
         javax.swing.GroupLayout Panel_DashboardLayout = new javax.swing.GroupLayout(Panel_Dashboard);
         Panel_Dashboard.setLayout(Panel_DashboardLayout);
         Panel_DashboardLayout.setHorizontalGroup(
             Panel_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
+            .addGroup(Panel_DashboardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Label_WelcomeMessage)
+                .addContainerGap(646, Short.MAX_VALUE))
         );
         Panel_DashboardLayout.setVerticalGroup(
             Panel_DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGroup(Panel_DashboardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Label_WelcomeMessage)
+                .addContainerGap(570, Short.MAX_VALUE))
         );
 
         getContentPane().add(Panel_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 840, 610));
@@ -416,6 +502,269 @@ public class PrincipalInterface extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_Label_ExitButtonMouseClicked
 
+    private void PanelsOff(){
+        Panel_Users.setVisible(false);
+        Panel_Clients.setVisible(false);
+        Panel_Suppliers.setVisible(false);
+        Panel_Products.setVisible(false);
+        Panel_Sells.setVisible(false);
+        Panel_Buys.setVisible(false);
+        Panel_Production.setVisible(false);
+        Panel_Inventory.setVisible(false);
+        Panel_Reports.setVisible(false);
+    }
+    
+    private void MenuButtonsOff(){
+        //Panels Off
+        switch(pressedButton){
+        case 0:
+            //Dashboard
+            Panel_Dashboard.setVisible(false);
+            ImageIcon dashboardOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteDashboard_32px.png"));
+            Label_DashboardButton.setIcon(dashboardOff);
+            Label_DashboardButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 1:
+            //Users
+            Panel_Users.setVisible(false);
+            ImageIcon UsersOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"));
+            Label_UsersButton.setIcon(UsersOff);
+            Label_UsersButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 2:
+            //Clients
+            Panel_Clients.setVisible(false);
+            ImageIcon ClientsOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"));
+            Label_ClientsButton.setIcon(ClientsOff);
+            Label_ClientsButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 3:
+            //Suppliers
+            Panel_Suppliers.setVisible(false);
+            ImageIcon SuppliersOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteTeam_32px.png"));
+            Label_SuppliersButton.setIcon(SuppliersOff);
+            Label_SuppliersButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 4:
+            //Products
+            Panel_Products.setVisible(false);
+            ImageIcon ProductsOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteTag_32px.png"));
+            Label_ProductsButton.setIcon(ProductsOff);
+            Label_ProductsButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 5:
+            //Sells
+            Panel_Sells.setVisible(false);
+            ImageIcon SellsOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"));
+            Label_SellsButton.setIcon(SellsOff);
+            Label_SellsButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 6:
+            //Buys
+            Panel_Buys.setVisible(false);
+            ImageIcon BuysOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteSell_32px.png"));
+            Label_BuysButton.setIcon(BuysOff);
+            Label_BuysButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 7:
+            //Production
+            Panel_Production.setVisible(false);
+            ImageIcon ProductionOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteProduction_32px.png"));
+            Label_ProductionButton.setIcon(ProductionOff);
+            Label_ProductionButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 8:
+            //Inventory
+            Panel_Inventory.setVisible(false);
+            ImageIcon InventoryOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteInventory_32px.png"));
+            Label_InventoryButton.setIcon(InventoryOff);
+            Label_InventoryButton.setForeground(new Color(255,255,255));
+            break;
+
+        case 9:
+            //Reports
+            Panel_Reports.setVisible(false);
+            ImageIcon ReportsOff = new ImageIcon(getClass().getResource("/images/Icon_WhiteReport_32px.png"));
+            Label_ReportsButton.setIcon(ReportsOff);
+            Label_ReportsButton.setForeground(new Color(255,255,255));
+            break;
+        }
+    }
+    
+    private void Label_DashboardButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_DashboardButtonMouseClicked
+        if (pressedButton != 0){
+            MenuButtonsOff();
+            pressedButton = 0;
+        }
+
+        //Changing the panels
+        Panel_Dashboard.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon DashboardActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeDashboard_32px.png"));
+        Label_DashboardButton.setIcon(DashboardActive);
+        Label_DashboardButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_DashboardButtonMouseClicked
+
+    private void Label_UsersButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_UsersButtonMouseClicked
+        if (pressedButton != 1){
+            MenuButtonsOff();
+            pressedButton = 1;
+        }
+
+        //Changing the panels
+        Panel_Users.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon UsersActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeTeam_32px.png"));
+        Label_UsersButton.setIcon(UsersActive);
+        Label_UsersButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_UsersButtonMouseClicked
+
+    private void Label_ClientsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ClientsButtonMouseClicked
+        if (pressedButton != 2){
+            MenuButtonsOff();
+            pressedButton = 2;
+        }
+
+        //Changing the panels
+        Panel_Clients.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon ClientsActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeTeam_32px.png"));
+        Label_ClientsButton.setIcon(ClientsActive);
+        Label_ClientsButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_ClientsButtonMouseClicked
+
+    private void Label_SuppliersButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_SuppliersButtonMouseClicked
+        if (pressedButton != 3){
+            MenuButtonsOff();
+           pressedButton = 3;
+        }
+
+        //Changing the panels
+        Panel_Suppliers.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon SuppliersdActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeTeam_32px.png"));
+        Label_SuppliersButton.setIcon(SuppliersdActive);
+        Label_SuppliersButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_SuppliersButtonMouseClicked
+
+    private void Label_ProductsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ProductsButtonMouseClicked
+        if (pressedButton != 4){
+            MenuButtonsOff();
+            pressedButton = 4;
+        }
+
+        //Changing the panels
+        Panel_Products.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon ProductsActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeTag_32px.png"));
+        Label_ProductsButton.setIcon(ProductsActive);
+        Label_ProductsButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_ProductsButtonMouseClicked
+
+    private void Label_SellsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_SellsButtonMouseClicked
+        if (pressedButton != 5){
+            MenuButtonsOff();
+            pressedButton = 5;
+        }
+
+        //Changing the panels
+        Panel_Sells.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon SellsActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeSell_32px.png"));
+        Label_SellsButton.setIcon(SellsActive);
+        Label_SellsButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_SellsButtonMouseClicked
+
+    private void Label_BuysButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_BuysButtonMouseClicked
+        if (pressedButton != 6){
+            MenuButtonsOff();
+            pressedButton = 6;
+        }
+
+        //Changing the panels
+        Panel_Buys.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon BuysActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeSell_32px.png"));
+        Label_BuysButton.setIcon(BuysActive);
+        Label_BuysButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_BuysButtonMouseClicked
+
+    private void Label_ProductionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ProductionButtonMouseClicked
+        if (pressedButton != 7){
+            MenuButtonsOff();
+            pressedButton = 7;
+        }
+
+        //Changing the panels
+        Panel_Production.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon ProductionActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeProduction_32px.png"));
+        Label_ProductionButton.setIcon(ProductionActive);
+        Label_ProductionButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_ProductionButtonMouseClicked
+
+    private void Label_InventoryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_InventoryButtonMouseClicked
+        if (pressedButton != 8){
+            MenuButtonsOff();
+            pressedButton = 8;
+        }
+
+        //Changing the panels
+        Panel_Inventory.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon InventoryActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeInventory_32px.png"));
+        Label_InventoryButton.setIcon(InventoryActive);
+        Label_InventoryButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_InventoryButtonMouseClicked
+
+    private void Label_ReportsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ReportsButtonMouseClicked
+        if (pressedButton != 9){
+            MenuButtonsOff();
+            pressedButton = 9;
+        }
+
+        //Changing the panels
+        Panel_Reports.setVisible(true);
+        
+        //Switching the buttons Off
+        ImageIcon ReportsActive = new ImageIcon(getClass().getResource("/images/Icon_OrangeReport_32px.png"));
+        Label_ReportsButton.setIcon(ReportsActive);
+        Label_ReportsButton.setForeground(new Color(255,97,50));
+    }//GEN-LAST:event_Label_ReportsButtonMouseClicked
+
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-mouseX-240, y-mouseY);
+    }//GEN-LAST:event_jLabel1MouseDragged
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+    }//GEN-LAST:event_jLabel1MousePressed
+ 
+    public void setUsersTree(AVLTree<User> usersTree){
+        this.usersTree = usersTree;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -452,13 +801,27 @@ public class PrincipalInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label_BuysButton;
+    private javax.swing.JLabel Label_ClientsButton;
+    private javax.swing.JLabel Label_DashboardButton;
     private javax.swing.JLabel Label_ExitButton;
+    private javax.swing.JLabel Label_HomeTitle;
+    private javax.swing.JLabel Label_InventoryButton;
+    private javax.swing.JLabel Label_MenuTitle;
+    private javax.swing.JLabel Label_OperacionesMenu;
+    private javax.swing.JLabel Label_ProductionButton;
+    private javax.swing.JLabel Label_ProductsButton;
+    private javax.swing.JLabel Label_ReportsButton;
+    private javax.swing.JLabel Label_SellsButton;
+    private javax.swing.JLabel Label_SuppliersButton;
+    private javax.swing.JLabel Label_UsersButton;
+    private javax.swing.JLabel Label_WelcomeMessage;
     private javax.swing.JPanel Panel_Buys;
     private javax.swing.JPanel Panel_Clients;
     private javax.swing.JPanel Panel_Dashboard;
     private javax.swing.JPanel Panel_Inventory;
-    private javax.swing.JPanel Panel_MasterOptions;
     private javax.swing.JPanel Panel_MenuBar;
+    private javax.swing.JPanel Panel_OptionsButtons;
     private javax.swing.JPanel Panel_Production;
     private javax.swing.JPanel Panel_Products;
     private javax.swing.JPanel Panel_Reports;
@@ -466,18 +829,6 @@ public class PrincipalInterface extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Suppliers;
     private javax.swing.JPanel Panel_Users;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
