@@ -38,7 +38,7 @@ public class TestTree {
         startTime = System.nanoTime();
 
         for (long j = 0; j < numberOfProofs; j++) {
-            testTree.Delete(testTree.Find((int) Math.random() * (10000000), testTree.getRoot()));
+            testTree.Delete((int) Math.random() * (10000000));
         }
 
         finishTime = System.nanoTime();

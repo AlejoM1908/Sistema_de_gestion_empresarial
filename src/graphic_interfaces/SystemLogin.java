@@ -67,7 +67,7 @@ public class SystemLogin extends javax.swing.JFrame {
     private void SaveUsers(){
         //Crea una cola y alberga en ella el arbol mediante funcion InOrder
         Queue<User> result = new Queue<>();
-        usersTree.InOrder(usersTree.getRoot(), result);
+        usersTree.InOrder(result);
         //Arreglo Json de usuarios
         JSONArray usersArray = new JSONArray();
         
