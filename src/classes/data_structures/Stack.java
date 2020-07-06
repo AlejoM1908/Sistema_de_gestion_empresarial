@@ -2,9 +2,13 @@ package classes.data_structures;
 
 interface StackInterface<T> {
     public void Push(T value);
+
     public T Pop();
+
     public T Top();
+
     public boolean IsEmpty();
+
     public void Empty();
 }
 
@@ -29,7 +33,7 @@ class StackNode<T> {
     /**
      * key is the data that is stored into the node
      * 
-     * @HasGetter 
+     * @HasGetter
      * @HasSetter
      * @return key stored in the node
      */
@@ -44,7 +48,7 @@ class StackNode<T> {
     /**
      * next is a pointer to the next node in the Stack
      * 
-     * @HasGetter 
+     * @HasGetter
      * @HasSetter
      * @return next node pointer
      */
@@ -60,15 +64,15 @@ class StackNode<T> {
 /**
  * @param <T> that define the data type
  */
-public class Stack<T> implements StackInterface<T>{
-    
+public class Stack<T> implements StackInterface<T> {
+
     private StackNode<T> head;
     private int size;
 
     /**
      * Constructor of the class Stack
      */
-    Stack() {
+    public Stack() {
         this.size = 0;
         this.head = null;
     }
@@ -78,7 +82,7 @@ public class Stack<T> implements StackInterface<T>{
      * 
      * @param head of the Stack to be reconstructed
      */
-    Stack(StackNode<T> head){
+    public Stack(StackNode<T> head) {
         this.head = head;
         this.size = 0;
         StablishStack();
@@ -87,14 +91,16 @@ public class Stack<T> implements StackInterface<T>{
     /**
      * Function that reconstruct a Stack given a head StackNode
      */
-    private void StablishStack(){
-        if (this.head == null) return;
+    private void StablishStack() {
+        if (this.head == null)
+            return;
 
         StackNode<T> stablishNode = this.head;
 
-        if (stablishNode.getNext() == null) this.size = 1;
-        else{
-            while(stablishNode.getNext() != null){
+        if (stablishNode.getNext() == null)
+            this.size = 1;
+        else {
+            while (stablishNode.getNext() != null) {
                 stablishNode = stablishNode.getNext();
                 this.size++;
             }
@@ -167,7 +173,7 @@ public class Stack<T> implements StackInterface<T>{
     /**
      * size is the value that stores how many nodes there is in the Stack
      * 
-     * @HasGetter 
+     * @HasGetter
      * @HasSetter
      * @return size of the Stack
      */
