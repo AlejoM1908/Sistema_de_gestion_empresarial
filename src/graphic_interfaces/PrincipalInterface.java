@@ -21,7 +21,7 @@ import org.json.simple.parser.*;
  * @author danie
  */
 public class PrincipalInterface extends javax.swing.JFrame {
-    private AVLTree<User> usersTree;
+    private HashTable<String, User> usersHash;
     private User logedUser;
     private int pressedButton;
     private int mouseX, mouseY;
@@ -761,8 +761,8 @@ public class PrincipalInterface extends javax.swing.JFrame {
         mouseY = evt.getY();
     }//GEN-LAST:event_jLabel1MousePressed
  
-    public void setUsersTree(AVLTree<User> usersTree){
-        this.usersTree = usersTree;
+    public void setUsersHash(HashTable<String, User> usersTree){
+        this.usersHash = usersTree;
     }
     
     /**

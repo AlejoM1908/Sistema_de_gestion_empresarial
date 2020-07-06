@@ -19,7 +19,7 @@ import org.json.simple.parser.*;
 import org.json.simple.*;
 
 public class SystemLogin extends javax.swing.JFrame {
-    private static AVLTree<User> usersTree = new AVLTree<>();
+    private static HashTable<String, User> usersHash = new HashTable<>();
     private int mouseX, mouseY;
     
     
@@ -32,6 +32,7 @@ public class SystemLogin extends javax.swing.JFrame {
         JSONParser parser = new JSONParser();
         
         try{
+            long startingTime = System.nanoTime();
             //Reading JSON file, cargamos el dataset del Json en un objeto haciendo el parce respectivo
             Object obj = parser.parse(new FileReader("src/json_files/Users.json"));
             //Transferimos el objeto a un json array
@@ -42,6 +43,8 @@ public class SystemLogin extends javax.swing.JFrame {
             usersTree
             */
             list.forEach(user -> parceUsers((JSONObject) user));
+            long finalTime = System.nanoTime();
+            System.out.println("Se tomo: " + (finalTime - startingTime));
         }
         catch(FileNotFoundException e){
             System.out.println("El Archivo no fue encontrado");
@@ -58,7 +61,7 @@ public class SystemLogin extends javax.swing.JFrame {
         String email = (String) object.get("Email");
         String type = (String) object.get("Type");
         
-        usersTree.Insert(new User(nickname, password, email, type));
+        usersHash.Add(nickname, new User(nickname, password, email, type));
     }
     
     /*
@@ -67,7 +70,7 @@ public class SystemLogin extends javax.swing.JFrame {
     private void SaveUsers(){
         //Crea una cola y alberga en ella el arbol mediante funcion InOrder
         Queue<User> result = new Queue<>();
-        usersTree.InOrder(result);
+        result = usersHash.traverseHash();
         //Arreglo Json de usuarios
         JSONArray usersArray = new JSONArray();
         
@@ -506,12 +509,12 @@ public class SystemLogin extends javax.swing.JFrame {
             password += passwordToConvert[i];
         }
         
-        User foundedUser = usersTree.getKey(usersTree.Find(new User(nickname, password), usersTree.getRoot()));
+        User foundedUser = usersHash.getValue(usersHash.Get(nickname, new User(nickname, password)));
         
-        if (foundedUser.getNickname().compareTo(nickname) == 0){
+        if (foundedUser != null && foundedUser.getNickname().compareTo(nickname) == 0){
             if (foundedUser.getPassword().compareTo(password) == 0){
                 PrincipalInterface principal = new PrincipalInterface(foundedUser);
-                principal.setUsersTree(usersTree);
+                principal.setUsersHash(usersHash);
                 SaveUsers();
                 
                 this.setVisible(false);
@@ -561,9 +564,9 @@ public class SystemLogin extends javax.swing.JFrame {
       
         //alberga el key del nickname si el nickname ingresado ya existe, si no, alberga root
         User newUser = new User(nickname, password, email, "None");
-        User foundedUser = usersTree.getKey(usersTree.Find(newUser, usersTree.getRoot()));
+        User foundedUser = usersHash.getValue(usersHash.Get(nickname, new User(nickname, password)));
         
-        if (foundedUser.getNickname().compareTo(nickname) == 0){
+        if (foundedUser != null && foundedUser.getNickname().compareTo(nickname) == 0){
                 
                 JOptionPane.showMessageDialog(null, "El usuario ingresado ya se encuentra registrado, intente con uno diferente.");
                 Text_NewUser.setText("");
@@ -573,7 +576,7 @@ public class SystemLogin extends javax.swing.JFrame {
             
         } else if (password.compareTo(confirmPassword) == 0){
             
-            usersTree.Insert(newUser);
+            usersHash.Add(nickname, newUser);
             SaveUsers();
             
             JOptionPane.showMessageDialog(null, "El usuario fue creado con exito");

@@ -2,7 +2,7 @@ package classes.data_structures;
 
 /**
  * 
- * @param <K> key 
+ * @param <K> key
  * @param <V>
  */
 interface HashTablesInterface<K extends Comparable<K>, V extends Comparable<V>> {
@@ -60,11 +60,11 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
         Start();
     }
 
-    public boolean IsEmpty(){
+    public boolean IsEmpty() {
         return size == 0;
     }
 
-    public void Empty(){
+    public void Empty() {
         Start();
     }
 
@@ -74,6 +74,10 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
             return;
 
         int index = HashCode(key);
+
+        if (index == -1)
+            return;
+
         HashNode<K, V> current = this.table[index];
 
         if (current == null) {
@@ -110,17 +114,28 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
             return null;
 
         while (current != null) {
-            if (current.getValue().compareTo(value) == 0) {
-                HashNode<K, V> temporal = current;
+            if (current.getNext() != null && current.getNext().getValue().compareTo(value) == 0) {
+                HashNode<K, V> temporal = current.getNext();
 
-                if (current.getNext() != null)
-                    current = current.getNext();
+                if (current.getNext().getNext() != null)
+                    current.setNext(current.getNext().getNext());
 
                 else
-                    current = null;
+                    current.setNext(null);
 
                 this.size--;
                 return temporal;
+            } else if (current.getValue().compareTo(value) == 0) {
+                HashNode<K, V> temporal = current;
+
+                if (current.getNext() != null)
+                    this.table[index] = current.getNext();
+                else
+                    this.table[index] = null;
+
+                this.size--;
+                return temporal;
+
             }
 
             current = current.getNext();
@@ -152,7 +167,7 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
         return null;
     }
 
-    public boolean Update(HashNode<K, V> node, V value){
+    public boolean Update(HashNode<K, V> node, V value) {
         if (node == null || value == null)
             return false;
 
@@ -160,7 +175,7 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
         return true;
     }
 
-    public boolean Exists(K key, V value){
+    public boolean Exists(K key, V value) {
         int index = HashCode(key);
 
         if (index == -1)
@@ -212,12 +227,11 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
         }
     }
 
-    @SuppressWarnings("unchecked")
     private int HashCode(K key) {
         if (key instanceof Integer) {
             int a = 56809, b = 15259;
 
-            return (int) ((a * (int) key + b) % PRIME_NUMBER) % cardinality;
+            return Math.abs((a * (Integer) key + b) % PRIME_NUMBER) % this.cardinality;
         }
 
         if (key instanceof String) {
@@ -227,32 +241,32 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
             for (int i = 0; i < hash.length(); i++)
                 result += ((int) hash.charAt(i) * (x ^ i)) % PRIME_NUMBER;
 
-            return result % cardinality;
+            return result % this.cardinality;
         }
 
         if (key instanceof Double) {
             double a = 45263, b = 73361;
 
-            return (int) ((a * (double) key + b) % PRIME_NUMBER) % cardinality;
+            return (int) Math.abs((a * (Double) key + b) % PRIME_NUMBER) % this.cardinality;
         }
 
         if (key instanceof Long) {
             long a = 364433, b = 581557;
 
-            return (int) ((a * (long) key + b) % PRIME_NUMBER) % cardinality;
+            return (int) Math.abs((a * (Long) key + b) % PRIME_NUMBER) % this.cardinality;
         }
 
         return -1;
     }
 
-    public Queue<V> traverseHash(){
+    public Queue<V> traverseHash() {
         Queue<V> queue = new Queue<>();
         HashNode<K, V> current;
 
-        for (int i=0; i<cardinality-1; i++){
+        for (int i = 0; i < cardinality; i++) {
             current = this.table[i];
 
-            while (current != null){
+            while (current != null) {
                 queue.Enqueue(current.getValue());
                 current = current.getNext();
             }
@@ -261,7 +275,7 @@ public class HashTable<K extends Comparable<K>, V extends Comparable<V>> impleme
         return queue;
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
     }
 
